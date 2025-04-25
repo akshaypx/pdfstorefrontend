@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Header from "./components/Header";
-import { AllPDFFilesData } from "./interfaces";
+// import { AllPDFFilesData } from "./interfaces";
 
 const BASE_URL = "http://localhost:8000";
 
 const App = () => {
-  const [allPdfs, setAllPdfs] = useState<AllPDFFilesData | null>(null);
+  // const [allPdfs, setAllPdfs] = useState<AllPDFFilesData | null>(null);
 
   const fetchAllPdfs = () => {
     fetch(BASE_URL + "/all-pdf")
