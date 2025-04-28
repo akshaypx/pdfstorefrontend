@@ -1,12 +1,6 @@
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Box, AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -25,8 +19,12 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             PDF Reader
           </Typography>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Upload</Button>
+          <Link to={"/"} className="px-2">
+            Home
+          </Link>
+          <Link to={"/upload"} className="px-2">
+            Upload
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
