@@ -1,10 +1,9 @@
-// src/components/GithubBase64Uploader.tsx
 import React, { useState } from "react";
 
 const GithubBase64Uploader: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [commitMessage, setCommitMessage] = useState("Add new file");
-  const [fileName, setFileName] = useState<string>("sample.pdf");
+  const [fileName, setFileName] = useState<string>("example.pdf");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string>("");
 
@@ -102,51 +101,55 @@ const GithubBase64Uploader: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleUpload}
-      className="max-w-md mx-auto p-4 border rounded"
-    >
-      <h2 className="text-lg font-medium mb-4">Upload File to GitHub</h2>
-
-      <label className="block mb-2">
-        <span className="block font-semibold">Choose file</span>
-        <input
-          id="fileInput"
-          type="file"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
-          className="mt-1 block w-full"
-        />
-      </label>
-
-      <label className="block mb-4">
-        <span className="block font-semibold">Commit message</span>
-        <input
-          type="text"
-          value={commitMessage}
-          onChange={(e) => setCommitMessage(e.target.value)}
-          className="mt-1 block w-full border rounded px-2 py-1"
-        />
-      </label>
-
-      <label>
-        <span>File Name:</span>
-        <input
-          type="text"
-          value={fileName}
-          onChange={(e) => setFileName(e.target.value)}
-        />
-      </label>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+    <div className="flex items-center justify-center p-4">
+      <form
+        onSubmit={handleUpload}
+        className="max-w-md mx-auto p-4 border rounded"
       >
-        {loading ? "Uploading…" : "Upload to GitHub"}
-      </button>
+        <h2 className="text-lg font-medium mb-4">Upload File to GitHub</h2>
 
-      {result && <p className="mt-4 text-sm whitespace-pre-wrap">{result}</p>}
-    </form>
+        <label className="block mb-2">
+          <span className="block font-semibold">Choose file</span>
+
+          <input
+            id="fileInput"
+            type="file"
+            onChange={(e) => setFile(e.target.files?.[0] || null)}
+            className="mt-1 block w-full"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="block font-semibold">Commit message</span>
+          <input
+            type="text"
+            value={commitMessage}
+            onChange={(e) => setCommitMessage(e.target.value)}
+            className="mt-1 block w-full border rounded px-2 py-1"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="block font-semibold">File Name</span>
+          <input
+            type="text"
+            value={fileName}
+            onChange={(e) => setFileName(e.target.value)}
+            className="mt-1 block w-full border rounded px-2 py-1"
+          />
+        </label>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+        >
+          {loading ? "Uploading…" : "Upload to GitHub"}
+        </button>
+
+        {result && <p className="mt-4 text-sm whitespace-pre-wrap">{result}</p>}
+      </form>
+    </div>
   );
 };
 
