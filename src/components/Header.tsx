@@ -25,7 +25,8 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             PDF Reader
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Home</Button>
+          <Button color="inherit">Upload</Button>
         </Toolbar>
       </AppBar>
     </Box>

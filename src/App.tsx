@@ -1,23 +1,34 @@
-import { useEffect } from "react";
-import Header from "./components/Header";
-// import { AllPDFFilesData } from "./interfaces";
-
-const BASE_URL = "http://localhost:8000";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Upload from "./pages/Upload";
+import Layout from "./components/Layout";
 
 const App = () => {
-  // const [allPdfs, setAllPdfs] = useState<AllPDFFilesData | null>(null);
-
-  const fetchAllPdfs = () => {
-    fetch(BASE_URL + "/all-pdf")
-      .then(async (res) => await res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    fetchAllPdfs();
-  }, []);
-  return <Header />;
+  return (
+    <>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            index
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
+          />
+          <Route
+            path="/upload"
+            element={
+              <Layout>
+                <Upload />
+              </Layout>
+            }
+          />
+        </Routes>
+      </Router>
+    </>
+  );
 };
 
 export default App;
